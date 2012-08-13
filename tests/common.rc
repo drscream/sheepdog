@@ -142,5 +142,15 @@ _wait_for_collie()
     done
 }
 
+_wait_for_sheep_join()
+{
+    while true; do
+        sleep 2
+        if [ $($COLLIE node list | wc -l) -eq $(($1+1)) ]; then
+            break
+        fi
+    done
+}
+
 # make sure this script returns success
 /bin/true
